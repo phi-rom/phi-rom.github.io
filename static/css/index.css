@@ -1,27 +1,62 @@
 /* Modern CSS Variables for consistent theming */
 :root {
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
+  --primary-color: #3b82f6; /* Brighter Blue */
+  --primary-hover: #2563eb;
   --secondary-color: #64748b;
-  --accent-color: #0ea5e9;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-light: #94a3b8;
-  --background-primary: #ffffff;
-  --background-secondary: #f8fafc;
-  --background-accent: #f1f5f9;
-  --border-color: #e2e8f0;
+  --accent-color: #0ea5e9; /* Sky Blue */
+  
+  --text-primary: #0f172a; /* UPDATED: Darker Slate */
+  --text-secondary: #334155; /* UPDATED: Darker Medium Slate */
+  --text-light: #64748b; /* Light Slate */
+  --text-inverted: #ffffff;
+  
+  --background-primary: #f8fafc; /* Very Light Grey (almost white) */
+  --background-secondary: #f1f5f9; /* Light Grey */
+  --background-accent: #e2e8f0; /* Grey */
+  --background-card: #ffffff; /* White */
+  
+  --border-color: #cbd5e1; /* Lighter Border */
+  
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --gradient-subtle: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  
   --border-radius: 12px;
   --border-radius-lg: 16px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* === ADDED: Dark Theme Palette === */
+html[data-theme="dark"] {
+  --primary-color: #60a5fa; /* Lighter Blue for dark bg */
+  --primary-hover: #93c5fd;
+  --secondary-color: #94a3b8;
+  --accent-color: #38bdf8; /* Light Sky Blue */
+
+  --text-primary: #ffffff; /* UPDATED: Pure white */
+  --text-secondary: #e2e8f0; /* UPDATED: Light grey */
+  --text-light: #94a3b8; /* Medium Grey (for tertiary text) */
+  --text-inverted: #0f172a; /* UPDATED: To match light theme text */
+
+  --background-primary: #0f172a; /* Very Dark Blue */
+  --background-secondary: #1e293b; /* Dark Slate */
+  --background-accent: #334155; /* Medium Slate */
+  --background-card: #1e293b; /* Dark Slate */
+  
+  --border-color: #334155; /* Darker Border */
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+}
+/* ================================== */
+
 
 /* Smooth scrolling for better UX */
 html {
@@ -36,6 +71,8 @@ body {
   background-color: var(--background-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* === ADDED: Smooth transition for theme change === */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -52,7 +89,7 @@ body {
 .button.is-dark {
   background: var(--text-primary) !important;
   border: none !important;
-  color: white !important;
+  color: var(--background-primary) !important; /* Use CSS var for text */
   box-shadow: var(--shadow-md);
 }
 
@@ -60,6 +97,7 @@ body {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
   background: var(--primary-color) !important;
+  color: var(--text-inverted) !important;
 }
 
 .button.is-dark:active {
@@ -91,6 +129,7 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .hero.is-light {
@@ -111,7 +150,17 @@ body {
 .teaser {
   font-family: 'Inter', sans-serif;
 }
+.teaser img {
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
 
+/* === THIS IS THE NEW RULE === */
+.teaser .subtitle {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+/* ============================ */
 
 /* Publication Content Styling */
 .publication-title {
@@ -120,6 +169,7 @@ body {
     color: var(--text-primary) !important;
     margin-bottom: 2rem !important;
     line-height: 1.1 !important;
+    transition: color 0.3s ease;
 }
 
 .publication-banner {
@@ -149,6 +199,8 @@ body {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500;
     margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .publication-venue {
@@ -160,6 +212,7 @@ body {
     border-radius: var(--border-radius);
     margin-top: 1rem;
     display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .publication-awards {
@@ -172,6 +225,13 @@ body {
     border-left: 4px solid #ef4444;
     margin-top: 1rem;
 }
+/* Dark mode for awards */
+html[data-theme="dark"] .publication-awards {
+    background: linear-gradient(135deg, #3f2222, #532828);
+    color: #fca5a5;
+    border-left-color: #f87171;
+}
+
 
 .publication-authors a {
    color: var(--primary-color) !important;
@@ -226,6 +286,7 @@ body {
     border-radius: var(--border-radius-lg) !important;
     box-shadow: var(--shadow-xl);
     transition: var(--transition);
+    border: 1px solid var(--border-color);
 }
 
 .publication-video:hover {
@@ -263,7 +324,7 @@ body {
   overflow: hidden;
   padding: 1.5rem;
   font-size: 0;
-  background: var(--background-primary);
+  background: var(--background-card);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
   transition: var(--transition);
@@ -288,6 +349,7 @@ body {
   color: var(--text-secondary);
   margin-top: 1rem;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 /* Pagination and Misc Improvements */
@@ -306,6 +368,7 @@ body {
   font-size: 0.875rem;
   color: var(--text-light);
   font-style: italic;
+  transition: color 0.3s ease;
 }
 
 /* Section Titles */
@@ -316,6 +379,7 @@ body {
   margin-bottom: 2rem !important;
   position: relative;
   padding-bottom: 1rem;
+  transition: color 0.3s ease;
 }
 
 .title.is-3::after {
@@ -331,6 +395,10 @@ body {
 }
 
 /* Content Improvements */
+.content {
+  transition: color 0.3s ease;
+}
+
 .content.has-text-justified {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -346,6 +414,7 @@ body {
   background: var(--background-secondary);
   border-top: 1px solid var(--border-color);
   padding: 3rem 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .footer .content {
@@ -373,12 +442,14 @@ pre {
   font-size: 0.9rem !important;
   overflow-x: auto;
   box-shadow: var(--shadow-sm);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 code {
   background: var(--background-accent) !important;
   color: var(--text-primary) !important;
   font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* BibTeX Section Improvements */
@@ -391,7 +462,7 @@ code {
 
 .copy-bibtex-btn {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-inverted);
   border: none;
   border-radius: var(--border-radius);
   padding: 0.75rem 1rem;
@@ -426,7 +497,7 @@ code {
   width: 50px;
   height: 50px;
   background: var(--primary-color);
-  color: white;
+  color: var(--text-inverted);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -462,9 +533,9 @@ code {
 }
 
 .more-works-btn {
-  background: var(--background-primary);
+  background: var(--background-card);
   color: var(--text-primary);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-lg);
   padding: 0.75rem 1.25rem;
   font-weight: 600;
@@ -501,7 +572,7 @@ code {
   right: 0;
   width: 400px;
   max-width: 90vw;
-  background: var(--background-primary);
+  background: var(--background-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-xl);
@@ -525,6 +596,7 @@ code {
   align-items: center;
   padding: 1.5rem 1.5rem 1rem;
   border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
 }
 
 .dropdown-header h4 {
@@ -532,6 +604,7 @@ code {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .close-btn {
@@ -575,6 +648,7 @@ code {
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .work-info p {
@@ -582,12 +656,14 @@ code {
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.4;
+  transition: color 0.3s ease;
 }
 
 .work-venue {
   font-size: 0.8rem;
   color: var(--text-light);
   font-style: italic;
+  transition: color 0.3s ease;
 }
 
 .work-item .fas {
@@ -595,6 +671,7 @@ code {
   font-size: 0.9rem;
   margin-top: 0.2rem;
   flex-shrink: 0;
+  transition: color 0.3s ease;
 }
 
 
@@ -666,10 +743,8 @@ code {
   }
   
   .more-works-container {
-    position: fixed;
     bottom: 2rem;
     right: 1rem;
-    z-index: 1000;
   }
   
   .more-works-btn {
@@ -678,11 +753,7 @@ code {
   }
   
   .more-works-dropdown {
-    position: absolute;
-    bottom: calc(100% + 0.5rem);
-    right: 0;
     width: calc(100vw - 2rem);
-    max-width: 90vw;
   }
   
   .link-block {
@@ -693,6 +764,18 @@ code {
   .button {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Move theme toggle to avoid overlap */
+  .theme-switch-container {
+    top: auto;
+    bottom: 2rem;
+    left: 1rem;
+    right: auto;
+  }
+
+  .more-works-container {
+    right: 1rem;
   }
 }
 
@@ -726,7 +809,8 @@ code {
 /* Improved focus states for accessibility */
 .button:focus,
 .related-works-btn:focus,
-a:focus {
+a:focus,
+input[type="checkbox"]:focus {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
@@ -734,7 +818,10 @@ a:focus {
 
 /* Print styles */
 @media print {
-  .more-works-container {
+  /* Hide theme toggle and other interactive elements */
+  .more-works-container,
+  .theme-switch-container,
+  .scroll-to-top {
     display: none;
   }
   
@@ -744,10 +831,138 @@ a:focus {
   
   .button {
     background: transparent !important;
-    color: var(--text-primary) !important;
+    color: #000 !important; /* Force black text for printing */
     box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+
+  /* Force light theme for printing */
+  html[data-theme="dark"] {
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-light: #64748b;
+    --background-primary: #ffffff;
+    --background-secondary: #ffffff;
+    --background-accent: #ffffff;
+    --background-card: #ffffff;
+    --border-color: #e2e8f0;
   }
 }
 
 
+/* === UPDATED: Theme Toggle Switch CSS === */
+.theme-switch-container {
+  position: fixed;
+  top: 6rem;
+  right: 5.5rem; /* Ample space */
+  /* left: 5rem; */
+  z-index: 1000; /* On top of "More Works" */
+}
 
+.theme-switch {
+  position: relative; /* This is crucial for positioning the knob */
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* This is the track */
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background-accent);
+  border: 0px solid var(--border-color);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+/* This is the knob */
+.knob {
+  position: absolute;
+  content: "";
+  height: 32px;
+  width: 32px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  z-index: 2; /* Knob is on top */
+  
+  /* This ensures icons are centered inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Animate the knob's movement */
+  transition: transform 0.4s ease;
+}
+
+/* This moves the knob */
+input:checked + .slider + .knob {
+  transform: translateX(26px);
+}
+
+/* Icon positioning and animation */
+.knob .icon-sun,
+.knob .icon-moon {
+  position: absolute; /* Stack icons on top of each other */
+  font-size: 0.9rem;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.knob .icon-sun {
+  color: #f39c12;
+}
+
+.knob .icon-moon {
+  color: #f1c40f;
+}
+
+/* Toggle icon visibility */
+input:not(:checked) + .slider + .knob .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+input:not(:checked) + .slider + .knob .icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+input:checked + .slider + .knob .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+input:checked + .slider + .knob .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+
+/* Responsive adjustment for toggle */
+@media screen and (max-width: 768px) {
+  .theme-switch-container {
+    top: auto;
+    bottom: 2rem;
+    left: 1rem;
+    right: auto;
+  }
+
+  .more-works-container {
+    top: auto;
+    bottom: 2rem;
+    right: 1rem;
+  }
+}
+/* ======================================= */

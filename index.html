@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <meta name="title" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Nima Hosseini Dashtbayaz, Hesam Salehipour, Adrian Butscher, Nigel Morris">
-  <meta name="description" content="We propose Physics-informed ROM (Φ-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
+  <meta name="description" content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
   <meta name="keywords" content="AI4Science, ML4Physics, Physics-informed Machine Learning, Reduced Order Modeling, Differentiable Solvers, Neural PDE Surrogates, JAX, Latent Dynamics, Fluid Dynamics">
   <meta name="author" content="Nima Hosseini Dashtbayaz, Hesam Salehipour, Adrian Butscher, Nigel Morris">
   <meta name="robots" content="index, follow">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Autodesk Research">
   <meta property="og:title" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
-  <meta property="og:description" content="We propose Physics-informed ROM (Φ-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
+  <meta property="og:description" content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
   <meta property="og:url" content="https://phi-rom.github.io/">
   <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta property="og:image:width" content="1200">
@@ -30,7 +30,7 @@
   <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
   <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
   <meta name="twitter:title" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
-  <meta name="twitter:description" content="We propose Physics-informed ROM (Φ-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
+  <meta name="twitter:description" content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
   <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta name="twitter:image:alt" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Research Preview">
 
@@ -54,8 +54,24 @@
   <link rel="preconnect" href="https://documentcloud.adobe.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-
-  <title>Φ-ROM: Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers</title>
+  <script>
+    // Apply theme immediately to prevent flash
+    (function() {
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+        } else {
+          // Optional: set default based on system preference
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+      } catch (e) {
+        console.warn('Could not apply saved theme.', e);
+      }
+    })();
+  </script>
+  <title>𝚽-ROM: Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers</title>
   
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
@@ -75,7 +91,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display.swap" rel="stylesheet">
   
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -89,7 +105,7 @@
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers",
-    "description": "We propose Physics-informed ROM (Φ-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems.",
+    "description": "We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems.",
     "author": [
       {
         "@type": "Person",
@@ -132,7 +148,7 @@
     "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
     "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
     "keywords": ["Reduced Order Modeling", "Differentiable Solvers", "Physics-informed Machine Learning", "Neural PDE Surrogates", "JAX"],
-    "abstract": "Reduced-order modeling (ROM) of time-dependent and parameterized differential equations aims to accelerate the simulation of complex high-dimensional systems by learning a compact latent manifold representation that captures the characteristics of the solution fields and their time-dependent dynamics. Although high-fidelity numerical solvers generate the training datasets, they have thus far been excluded from the training process, causing the learned latent dynamics to drift away from the discretized governing physics. This mismatch often limits generalization and forecasting capabilities. In this work, we propose Physics-informed ROM (Φ-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems. Our model outperforms state-of-the-art data-driven ROMs and other physics-informed strategies by accurately generalizing to new dynamics arising from unseen parameters, enabling long-term forecasting beyond the training horizon, maintaining continuity in both time and space, and reducing the data cost. Furthermore, Φ-ROM learns to recover and forecast the solution fields even when trained or evaluated with sparse and irregular observations of the fields, providing a flexible framework for field reconstruction and data assimilation. We demonstrate the framework's robustness across different PDE solvers and highlight its broad applicability by providing an open-source JAX implementation readily extensible to other PDE systems and differentiable solvers.",
+    "abstract": "Reduced-order modeling (ROM) of time-dependent and parameterized differential equations aims to accelerate the simulation of complex high-dimensional systems by learning a compact latent manifold representation that captures the characteristics of the solution fields and their time-dependent dynamics. Although high-fidelity numerical solvers generate the training datasets, they have thus far been excluded from the training process, causing the learned latent dynamics to drift away from the discretized governing physics. This mismatch often limits generalization and forecasting capabilities. In this work, we propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems. Our model outperforms state-of-the-art data-driven ROMs and other physics-informed strategies by accurately generalizing to new dynamics arising from unseen parameters, enabling long-term forecasting beyond the training horizon, maintaining continuity in both time and space, and reducing the data cost. Furthermore, 𝚽-ROM learns to recover and forecast the solution fields even when trained or evaluated with sparse and irregular observations of the fields, providing a flexible framework for field reconstruction and data assimilation. We demonstrate the framework's robustness across different PDE solvers and highlight its broad applicability by providing an open-source JAX implementation readily extensible to other PDE systems and differentiable solvers.",
     "citation": "@misc{hosseini2025physicsinformed,\n      title={Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers}, \n      author={Nima Hosseini Dashtbayaz and Hesam Salehipour and Adrian Butscher and Nigel Morris},\n      year={2025},\n      eprint={2505.14595},\n      archivePrefix={arXiv},\n      primaryClass={cs.LG}\n}",
     "isAccessibleForFree": true,
     "license": "https://creativecommons.org/licenses/by/4.0/",
@@ -174,6 +190,14 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
+  <div class="theme-switch-container">
+    <label class="theme-switch" for="themeToggle">
+      <input type="checkbox" id="themeToggle" aria-label="Toggle light and dark theme">
+      <span class="slider"></span> <span class="knob"> <span class="icon-sun"><i class="fas fa-sun"></i></span>
+        <span class="icon-moon"><i class="fas fa-moon"></i></span>
+      </span>
+    </label>
+  </div>
   <div class="more-works-container">
     <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
       <i class="fas fa-flask"></i>
@@ -206,7 +230,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Φ-ROM: Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers</h1>
+            <h1 class="title is-1 publication-title">𝚽-ROM: Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://nimahsn.github.io" target="_blank">Nima Hosseini Dashtbayaz</a><sup>1</sup>,</span>
@@ -216,7 +240,7 @@
                     <a href="https://www.research.autodesk.com/people/adrian-butscher/" target="_blank">Adrian Butscher</a><sup>2</sup>,
                   </span>
                   <span class="author-block">
-                    <a href="https://www.research.autodesk.com/people/nigel-morris/" target="_blank">Nigel Morris</a><sup>2</sup>
+                    <a href="https://www.research.autodesk.com/people/nigel-moral-research/" target="_blank">Nigel Morris</a><sup>2</sup>
                   </span>
                   </div>
 
@@ -247,17 +271,7 @@
                   </a>
                 </span>
 
-                    <!-- <span class="link-block">
-                    <a href="https://neurips.cc/virtual/2025/poster/117995" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-slideshare"></i>
-                    </span>
-                    <span>Poster</span>
-                  </a>
-                </span> -->
-
-                <span class="link-block">
+                    <span class="link-block">
                   <a href="https://arxiv.org/abs/2505.14595" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -278,14 +292,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video> -->
-      <img src="static/images/PHI-ROM.png" alt="Phi-ROM training process" loading="lazy"/>
+      <img src="static/images/phirom_overview.png" alt="Phi-ROM overview" loading="lazy"/>
       <h2 class="subtitle has-text-centered">
-        <b>🚧 This webpage is being updated. Please check back later for more information. 🚧</b>
-        <!-- We introduce Φ-ROM, a novel physics-informed reduced order model that incorporates differentiable PDE solvers directly into the training loop. This ensures the learned latent dynamics are consistent with the governing physics, leading to improved generalization, long-term forecasting, and data efficiency, even with sparse observations. -->
-      </h2>
+        𝚽-ROM is a physics-informed reduced-order model that integrates differentiable PDE solvers into the training loop and learns the latent temporal dynamics consistent with the governing physics as embedded in the solver. The resulting model generalizes to unseen parameters, enables long-term forecasting, improves data efficiency, and is robust to various physical phenomena.
+        </h2>
     </div>
   </div>
 </section>
@@ -296,95 +306,117 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Reduced-order modeling (ROM) of time-dependent and parameterized differential equations aims to accelerate the simulation of complex high-dimensional systems by learning a compact latent manifold representation that captures the characteristics of the solution fields and their time-dependent dynamics. Although high-fidelity numerical solvers generate the training datasets, they have thus far been excluded from the training process, causing the learned latent dynamics to drift away from the discretized governing physics. This mismatch often limits generalization and forecasting capabilities. In this work, we propose Physics-informed ROM (Φ-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems. Our model outperforms state-of-the-art data-driven ROMs and other physics-informed strategies by accurately generalizing to new dynamics arising from unseen parameters, enabling long-term forecasting beyond the training horizon, maintaining continuity in both time and space, and reducing the data cost. Furthermore, Φ-ROM learns to recover and forecast the solution fields even when trained or evaluated with sparse and irregular observations of the fields, providing a flexible framework for field reconstruction and data assimilation. We demonstrate the framework's robustness across different PDE solvers and highlight its broad applicability by providing an open-source JAX implementation readily extensible to other PDE systems and differentiable solvers.
+            Reduced-order modeling (ROM) of time-dependent and parameterized differential equations aims to accelerate the simulation of complex high-dimensional systems by learning a compact latent manifold representation that captures the characteristics of the solution fields and their time-dependent dynamics. Although high-fidelity numerical solvers generate the training datasets, they have thus far been excluded from the training process, causing the learned latent dynamics to drift away from the discretized governing physics. This mismatch often limits generalization and forecasting capabilities. In this work, we propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems. Our model outperforms state-of-the-art data-driven ROMs and other physics-informed strategies by accurately generalizing to new dynamics arising from unseen parameters, enabling long-term forecasting beyond the training horizon, maintaining continuity in both time and space, and reducing the data cost. Furthermore, 𝚽-ROM learns to recover and forecast the solution fields even when trained or evaluated with sparse and irregular observations of the fields, providing a flexible framework for field reconstruction and data assimilation. We demonstrate the framework's robustness across different PDE solvers and highlight its broad applicability by providing an open-source JAX implementation readily extensible to other PDE systems and differentiable solvers.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section> -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
 
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
+<section class="section is-light" id="extend-phirom">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Extending 𝚽-ROM to New PDEs</h2>
+    <div class="content">
+      <p>
+        To extend 𝚽-ROM to a new time-dependent PDE with a differentiable numerical solver implemented in JAX, follow these steps:
+      </p>
+      <ol>
+        <li>Generate or collect simulation trajectories and parameters for the target PDE.</li>
+        <li>Write a wrapper for the differentiable numerical solver implemented in JAX that yields the temporal derivatives given the current state and parameters.</li>
+        <li>Write a Dataset class (inheriting from <code>torch.utils.data.Dataset</code>) to handle the simulation data.</li>
+      </ol>
+
+      Below is a simplified example for the navier-stokes equations using <a href="https://github.com/google/jax-cfd">JAX-CFD</a>. See the complete code in our <a href="https://github.com/phi-rom/PhiROM/blob/main/PHIROM/pde/navier_turbulence.py">GitHub repository</a>. See the <a href="https://github.com/phi-rom/PhiROM/blob/main/PHIROM/pde/navier_turbulence_irregular.py">irregular data example</a> for when the data and solver grids are different.
+      <br><br>
+      <p>1) PDE dataset:</p>
+      <pre><code class="language-python"># navier_turbulence.py
+class NavierStokesDataset(torch.utils.data.Dataset):
+
+    ...
+
+    def __len__(self):
+        """
+        Returns the total numerber of snapshots (i.e. number of trajectories * timesteps per trajectory)
+        """
+        return len(self.trajectories) * self.num_time_steps
+
+    def __getitem__(self, idx)
+        """
+        Returns a single snapshot, along with grid, time, and solver parameters.
+        """
+
+        traj_idx = idx // self.num_time_steps
+        time_idx = traj_idx * self.num_time_steps
+        u = self.trajectories[traj_idx, time_idx]
+
+        return {
+          "data": u,  # velocity field at this snapshot
+          "t": self.t[traj_idx, time_idx], # time value
+          "idx": traj_idx, # trajectory index needed for training auto-decoder
+          "time_idx": time_idx, # time index needed for training auto-decoder
+          "coords": self.X, # spatial grid of the snapshot
+          "dt": self.dt[traj_idx], # time step size used in solver (None if not needed for your solver)
+          "dx": self.dx, # spatial grid spacing used in solver (None if not needed for your solver)
+          "solver_args": [ # any additional solver parameters needed for your solver
+              self.density[traj_idx],
+              self.viscosity[traj_idx],
+              self.inner_dt[traj_idx],
+          ] 
+        }
+</code></pre>
+If the PDE is parameterized (e.g., varying viscosity), the dataset should also return the pair <code>"node_args": array</code> containing the parameters that are passed to the dynamics network. Additional methods are required to provide data normalization statistics (see the <a href="https://github.com/phi-rom/PhiROM/blob/main/PHIROM/pde/navier_turbulence.py">complete code</a>).
+<br><br>
+
+      <p>2) PDE dynamics wrapper:</p>
+      <pre><code class="language-python"># navier_turbulence.py
+def cfd_residual_builder(grid):
+    # JAX-CFD solver, where grid is the solver grid required by JAX-CFD. Note that this grid may be different from the data grid.
+    solver = partial(cfd.equations.semi_implicit_navier_stokes, grid=grid) 
+
+    def residual(field_1, dt, dx, density, viscosity, inner_dt, *args):
+        """
+        Computes the residual of the Navier-Stokes equations using JAX-CFD. 
+        Your solver wrapper must have the first three arguments even if they are not used.
+
+        Args:
+            field_1: Array of shape (C, Nx, Ny) representing the reconstructed field at the current time step.
+            dt: time step size between two consecutive data snapshots (not used here since the solver uses a different time step).
+            dx: Spatial grid spacing (not used here).
+            density: Fluid density parameter for the solver. Optional argument depending on the PDE solver.
+            viscosity: Fluid viscosity parameter for the solver. Optional argument depending on the PDE solver.
+            inner_dt: Time step size used within the solver. Optional argument depending on the PDE solver.
+        Returns:
+            Array of shape (C, Nx, Ny) representing the time derivative of the field computed by the solver.
+        """
         
-      </div>
+        # The code below is specific to JAX-CFD and may differ for other solvers.
+        v0, v1 = field_1
+        v0, v1 = grid.stagger((v0, v1))
+        v = (
+            cfd.grids.GridVariable(
+                array=v0, bc=cfd.boundaries.periodic_boundary_conditions(2)
+            ),
+            cfd.grids.GridVariable(
+                array=v1, bc=cfd.boundaries.periodic_boundary_conditions(2)
+            ),
+        )
+        v = solver(dt=inner_dt, density=density, viscosity=viscosity)(v)
+        # The solver returns the field at the next time step; we compute the time derivative as (v_next - v_current) / inner_dt
+        return (jnp.stack([v[0].data, v[1].data], axis=0) - field_1) / inner_dt
+
+    return residual
+</code></pre>
+      The <code>residual</code> function above is used by 𝚽-ROM during training. Note that this function will be <a href="https://docs.jax.dev/en/latest/jit-compilation.html">JIT'ed</a> during training.
+
+      <br><br>
+      Now you can use the new dataset and solver to train 𝚽-ROM (see the <a href="https://github.com/phi-rom/PhiROM/blob/main/script_turbulence.py">training script</a>).
+      
+      
     </div>
-  </section> -->
+  </div>
+</section>
+
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">

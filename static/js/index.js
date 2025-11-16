@@ -1,5 +1,47 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
+// === UPDATED: Theme Toggle Logic ===
+(function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const docElement = document.documentElement;
+
+    if (!themeToggle) {
+        console.warn('Theme toggle checkbox not found.');
+        return;
+    }
+
+    // Simplified function: ONLY sets theme attributes
+    function setTheme(theme) {
+        try {
+            docElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        } catch (e) {
+            console.error('Failed to set theme:', e);
+        }
+    }
+
+    // Event listener: Reads state, calls simplified function
+    themeToggle.addEventListener('change', () => {
+        const newTheme = themeToggle.checked ? 'dark' : 'light';
+        setTheme(newTheme);
+    });
+
+    // Initialization: Reads theme from head script, sets checkbox state
+    // This runs ONCE on load to sync the toggle to the current theme.
+    const currentTheme = docElement.getAttribute('data-theme');
+    if (currentTheme) {
+        themeToggle.checked = currentTheme === 'dark';
+    } else {
+        // Fallback in case head script fails
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        themeToggle.checked = prefersDark;
+        // We MUST call setTheme here to set localStorage if it was empty
+        setTheme(prefersDark ? 'dark' : 'light'); 
+    }
+})();
+// ===================================
+
+
 // More Works Dropdown Functionality
 function toggleMoreWorks() {
     const dropdown = document.getElementById('moreWorksDropdown');
@@ -21,8 +63,8 @@ document.addEventListener('click', function(event) {
     const button = document.querySelector('.more-works-btn');
     
     if (container && !container.contains(event.target)) {
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
+        if (dropdown) dropdown.classList.remove('show');
+        if (button) button.classList.remove('active');
     }
 });
 
@@ -31,8 +73,8 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         const dropdown = document.getElementById('moreWorksDropdown');
         const button = document.querySelector('.more-works-btn');
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
+        if (dropdown) dropdown.classList.remove('show');
+        if (button) button.classList.remove('active');
     }
 });
 
@@ -83,10 +125,12 @@ function scrollToTop() {
 // Show/hide scroll to top button
 window.addEventListener('scroll', function() {
     const scrollButton = document.querySelector('.scroll-to-top');
-    if (window.pageYOffset > 300) {
-        scrollButton.classList.add('visible');
-    } else {
-        scrollButton.classList.remove('visible');
+    if (scrollButton) {
+        if (window.pageYOffset > 300) {
+            scrollButton.classList.add('visible');
+        } else {
+            scrollButton.classList.remove('visible');
+        }
     }
 });
 
