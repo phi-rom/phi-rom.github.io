@@ -314,104 +314,43 @@
   </div>
 </section>
 
-<section class="section is-light" id="extend-phirom">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Extending 𝚽-ROM to New PDEs</h2>
-    <div class="content">
-      <p>
-        To extend 𝚽-ROM to a new time-dependent PDE with a differentiable numerical solver implemented in JAX, follow these steps:
-      </p>
-      <ol>
-        <li>Generate or collect simulation trajectories and parameters for the target PDE.</li>
-        <li>Write a wrapper for the differentiable numerical solver implemented in JAX that yields the temporal derivatives given the current state and parameters.</li>
-        <li>Write a Dataset class (inheriting from <code>torch.utils.data.Dataset</code>) to handle the simulation data.</li>
-      </ol>
+<!-- <section class="hero" id="results">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title">Results</h2>
+        <div class="content">
+          <p>
+            <strong>Generalization to Unseen Parameters:</strong> 𝚽-ROM accurately predicts dynamics for initial conditions and parameter values not seen during training, outperforming data-driven ROMs that often fail to generalize.
+          </p>
+          <img src="static/images/generalization_results.png" alt="Phi-ROM generalization results" loading="lazy"/>
+          <p>
+            <strong>Long-term Forecasting:</strong> By embedding the governing physics into the latent dynamics, 𝚽-ROM maintains accuracy over extended time horizons, reducing error accumulation common in data-driven models.
+          </p>
+          <img src="static/images/long_term_forecasting.png" alt="Phi-ROM long-term forecasting results" loading="lazy"/>
+          <p>
+            <strong>Data Efficiency:</strong> The physics-informed approach allows 𝚽-ROM to achieve high accuracy with significantly less training data compared to purely data-driven ROMs.
+          </p>
+          <img src="static/images/data_efficiency_results.png" alt="Phi-ROM data efficiency results" loading="lazy"/>
+          <p>
+            <strong>Robust to Various Physical Phenomena:</strong> 𝚽-ROM demonstrates robustness across a range of physical phenomena compared to other physics-informed strategies, such as PINNs and CROM.
+          </p>
+          <img src="static/images/robustness_results.png" alt="Phi-ROM robustness results" loading="lazy"/>
+          <p>
+            <strong>Sparse and Irregular Data Handling:</strong> 𝚽-ROM effectively reconstructs and forecasts solution fields even when trained on sparse or irregularly sampled data, demonstrating robustness in practical scenarios.
+          </p>
+          <img src="static/images/results_summary.png" alt="Summary of Phi-ROM results" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+</section> -->
 
-      Below is a simplified example for the navier-stokes equations using <a href="https://github.com/google/jax-cfd">JAX-CFD</a>. See the complete code in our <a href="https://github.com/phi-rom/PhiROM/blob/main/PHIROM/pde/navier_turbulence.py">GitHub repository</a>. See the <a href="https://github.com/phi-rom/PhiROM/blob/main/PHIROM/pde/navier_turbulence_irregular.py">irregular data example</a> for when the data and solver grids are different.
-      <br><br>
-      <p>1) PDE dataset:</p>
-      <pre><code class="language-python"># navier_turbulence.py
-class NavierStokesDataset(torch.utils.data.Dataset):
+<section class="hero is-small is-light">
+<div class="hero-body">
+  <div class="container">
+    <h2 class="title">Poster</h2>
 
-    ...
-
-    def __len__(self):
-        """
-        Returns the total numerber of snapshots (i.e. number of trajectories * timesteps per trajectory)
-        """
-        return len(self.trajectories) * self.num_time_steps
-
-    def __getitem__(self, idx)
-        """
-        Returns a single snapshot, along with grid, time, and solver parameters.
-        """
-
-        traj_idx = idx // self.num_time_steps
-        time_idx = traj_idx * self.num_time_steps
-        u = self.trajectories[traj_idx, time_idx]
-
-        return {
-          "data": u,  # velocity field at this snapshot
-          "t": self.t[traj_idx, time_idx], # time value
-          "idx": traj_idx, # trajectory index needed for training auto-decoder
-          "time_idx": time_idx, # time index needed for training auto-decoder
-          "coords": self.X, # spatial grid of the snapshot
-          "dt": self.dt[traj_idx], # time step size used in solver (None if not needed for your solver)
-          "dx": self.dx, # spatial grid spacing used in solver (None if not needed for your solver)
-          "solver_args": [ # any additional solver parameters needed for your solver
-              self.density[traj_idx],
-              self.viscosity[traj_idx],
-              self.inner_dt[traj_idx],
-          ] 
-        }
-</code></pre>
-If the PDE is parameterized (e.g., varying viscosity), the dataset should also return the pair <code>"node_args": array</code> containing the parameters that are passed to the dynamics network. Additional methods are required to provide data normalization statistics (see the <a href="https://github.com/phi-rom/PhiROM/blob/main/PHIROM/pde/navier_turbulence.py">complete code</a>).
-<br><br>
-
-      <p>2) PDE dynamics wrapper:</p>
-      <pre><code class="language-python"># navier_turbulence.py
-def cfd_residual_builder(grid):
-    # JAX-CFD solver, where grid is the solver grid required by JAX-CFD. Note that this grid may be different from the data grid.
-    solver = partial(cfd.equations.semi_implicit_navier_stokes, grid=grid) 
-
-    def residual(field_1, dt, dx, density, viscosity, inner_dt, *args):
-        """
-        Computes the residual of the Navier-Stokes equations using JAX-CFD. 
-        Your solver wrapper must have the first three arguments even if they are not used.
-
-        Args:
-            field_1: Array of shape (C, Nx, Ny) representing the reconstructed field at the current time step.
-            dt: time step size between two consecutive data snapshots (not used here since the solver uses a different time step).
-            dx: Spatial grid spacing (not used here).
-            density: Fluid density parameter for the solver. Optional argument depending on the PDE solver.
-            viscosity: Fluid viscosity parameter for the solver. Optional argument depending on the PDE solver.
-            inner_dt: Time step size used within the solver. Optional argument depending on the PDE solver.
-        Returns:
-            Array of shape (C, Nx, Ny) representing the time derivative of the field computed by the solver.
-        """
-        
-        # The code below is specific to JAX-CFD and may differ for other solvers.
-        v0, v1 = field_1
-        v0, v1 = grid.stagger((v0, v1))
-        v = (
-            cfd.grids.GridVariable(
-                array=v0, bc=cfd.boundaries.periodic_boundary_conditions(2)
-            ),
-            cfd.grids.GridVariable(
-                array=v1, bc=cfd.boundaries.periodic_boundary_conditions(2)
-            ),
-        )
-        v = solver(dt=inner_dt, density=density, viscosity=viscosity)(v)
-        # The solver returns the field at the next time step; we compute the time derivative as (v_next - v_current) / inner_dt
-        return (jnp.stack([v[0].data, v[1].data], axis=0) - field_1) / inner_dt
-
-    return residual
-</code></pre>
-      The <code>residual</code> function above is used by 𝚽-ROM during training. Note that this function will be <a href="https://docs.jax.dev/en/latest/jit-compilation.html">JIT'ed</a> during training.
-
-      <br><br>
-      Now you can use the new dataset and solver to train 𝚽-ROM (see the <a href="https://github.com/phi-rom/PhiROM/blob/main/script_turbulence.py">training script</a>).
-      
+    <iframe  src="static/pdfs/poster_neurips.pdf" width="100%" height="700">
+        </iframe>
       
     </div>
   </div>
@@ -426,13 +365,13 @@ def cfd_residual_builder(grid):
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@inproceedings{hosseini2025phirom,
-  title={{Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers}},
-  author={Hosseini Dashtbayaz, Nima and Salehipour, Hesam and Butscher, Adrian and Morris, Nigel},
-  booktitle={Advances in Neural Information Processing Systems},
-  year={2025},
-  volume={39}
-}</code></pre>
+      <pre id="bibtex-code"><code>@article{hosseini2025phirom,
+  title   = {Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers},
+  author  = {Nima Hosseini Dashtbayaz and Hesam Salehipour and Adrian Butscher and Nigel Morris},
+  year    = {2025},
+  journal = {arXiv preprint arXiv: 2505.14595}
+}
+</code></pre>
     </div>
 </section>
 <footer class="footer">
