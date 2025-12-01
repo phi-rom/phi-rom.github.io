@@ -145,16 +145,16 @@
       "@type": "Organization",
       "name": "arXiv"
     },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "url": "https://phi-rom.github.io/",
+    "image": "https://phi-rom.github.io/static/images/PHI-ROM.png",
     "keywords": ["Reduced Order Modeling", "Differentiable Solvers", "Physics-informed Machine Learning", "Neural PDE Surrogates", "JAX"],
     "abstract": "Reduced-order modeling (ROM) of time-dependent and parameterized differential equations aims to accelerate the simulation of complex high-dimensional systems by learning a compact latent manifold representation that captures the characteristics of the solution fields and their time-dependent dynamics. Although high-fidelity numerical solvers generate the training datasets, they have thus far been excluded from the training process, causing the learned latent dynamics to drift away from the discretized governing physics. This mismatch often limits generalization and forecasting capabilities. In this work, we propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems. Our model outperforms state-of-the-art data-driven ROMs and other physics-informed strategies by accurately generalizing to new dynamics arising from unseen parameters, enabling long-term forecasting beyond the training horizon, maintaining continuity in both time and space, and reducing the data cost. Furthermore, 𝚽-ROM learns to recover and forecast the solution fields even when trained or evaluated with sparse and irregular observations of the fields, providing a flexible framework for field reconstruction and data assimilation. We demonstrate the framework's robustness across different PDE solvers and highlight its broad applicability by providing an open-source JAX implementation readily extensible to other PDE systems and differentiable solvers.",
     "citation": "@misc{hosseini2025physicsinformed,\n      title={Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers}, \n      author={Nima Hosseini Dashtbayaz and Hesam Salehipour and Adrian Butscher and Nigel Morris},\n      year={2025},\n      eprint={2505.14595},\n      archivePrefix={arXiv},\n      primaryClass={cs.LG}\n}",
     "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
     "mainEntity": {
       "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+      "@id": "https://phi-rom.github.io/"
     },
     "about": [
       {
@@ -175,7 +175,7 @@
     "@type": "Organization",
     "name": "Autodesk Research",
     "url": "https://www.autodesk.com/research",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "logo": "https://phi-rom.github.io/static/images/PHI-ROM.png",
     "sameAs": [
       "https://twitter.com/YOUR_TWITTER_HANDLE",
       "https://github.com/YOUR_GITHUB_USERNAME"
@@ -278,6 +278,15 @@
                     <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
+
+                  <span class="link-block">
+                  <a href="https://neurips.cc/virtual/2025/loc/mexico-city/poster/117995" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-chalkboard"></i>
+                  </span>
+                  <span>Slides</span>
+
                 </a>
               </span>
             </div>
