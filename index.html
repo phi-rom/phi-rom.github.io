@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <meta name="title" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Nima Hosseini Dashtbayaz, Hesam Salehipour, Adrian Butscher, Nigel Morris">
-  <meta name="description" content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
-  <meta name="keywords" content="AI4Science, ML4Physics, Physics-informed Machine Learning, Reduced Order Modeling, Differentiable Solvers, Neural PDE Surrogates, JAX, Latent Dynamics, Fluid Dynamics">
+
+  <meta name="title"
+    content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Nima Hosseini Dashtbayaz, Hesam Salehipour, Adrian Butscher, Nigel Morris">
+  <meta name="description"
+    content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
+  <meta name="keywords"
+    content="AI4Science, ML4Physics, Physics-informed Machine Learning, Reduced Order Modeling, Differentiable Solvers, Neural PDE Surrogates, JAX, Latent Dynamics, Fluid Dynamics">
   <meta name="author" content="Nima Hosseini Dashtbayaz, Hesam Salehipour, Adrian Butscher, Nigel Morris">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  
+
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Autodesk Research">
-  <meta property="og:title" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
-  <meta property="og:description" content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
+  <meta property="og:title"
+    content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
+  <meta property="og:description"
+    content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
   <meta property="og:url" content="https://phi-rom.github.io/">
   <meta property="og:image" content="https://phi-rom.github.io/static/images/phirom_training_overview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Research Preview">
+  <meta property="og:image:alt"
+    content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Research Preview">
   <meta property="article:published_time" content="2025-05-20T00:00:00.000Z">
   <meta property="article:author" content="Nima Hosseini Dashtbayaz">
   <meta property="article:section" content="Research">
@@ -29,12 +36,16 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@nimahsnd">
   <meta name="twitter:creator" content="@nimahsnd">
-  <meta name="twitter:title" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
-  <meta name="twitter:description" content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
+  <meta name="twitter:title"
+    content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
+  <meta name="twitter:description"
+    content="We propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure to ensure a strong correspondence between the full and reduced systems.">
   <meta name="twitter:image" content="https://phi-rom.github.io/static/images/phirom_training_overview.png">
-  <meta name="twitter:image:alt" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Research Preview">
+  <meta name="twitter:image:alt"
+    content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers - Research Preview">
 
-  <meta name="citation_title" content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
+  <meta name="citation_title"
+    content="Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers">
   <meta name="citation_author" content="Hosseini Dashtbayaz, Nima">
   <meta name="citation_author" content="Salehipour, Hesam">
   <meta name="citation_author" content="Butscher, Adrian">
@@ -42,12 +53,12 @@
   <meta name="citation_publication_date" content="2025">
   <meta name="citation_conference_title" content="arXiv preprint arXiv:2505.14595">
   <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2505.14595.pdf">
-  
+
   <meta name="theme-color" content="#2563eb">
   <meta name="msapplication-TileColor" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://ajax.googleapis.com">
@@ -56,7 +67,7 @@
 
   <script>
     // Apply theme immediately to prevent flash
-    (function() {
+    (function () {
       try {
         const theme = localStorage.getItem('theme');
         if (theme) {
@@ -72,34 +83,37 @@
     })();
   </script>
   <title>𝚽-ROM: Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers</title>
-  
+
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
+
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+
   <noscript>
     <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="static/css/bulma-slider.min.css">
     <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display.swap" rel="stylesheet">
-  
+
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -168,7 +182,7 @@
     ]
   }
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -183,6 +197,7 @@
   }
   </script>
 </head>
+
 <body>
 
 
@@ -215,7 +230,8 @@
         <a href="https://github.com/Autodesk/XLB" class="work-item" target="_blank">
           <div class="work-info">
             <h5>XLB: A differentiable massively parallel lattice Boltzmann library in Python</h5>
-            <p>XLB is a fully differentiable 2D/3D Lattice Boltzmann Method (LBM) library that leverages hardware acceleration, supporting JAX and Nvidia Warp.</p>
+            <p>XLB is a fully differentiable 2D/3D Lattice Boltzmann Method (LBM) library that leverages hardware
+              acceleration, supporting JAX and Nvidia Warp.</p>
             <span class="work-venue">Computer Physics Communications 2024</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
@@ -225,112 +241,145 @@
   </div>
 
   <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">𝚽-ROM: Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers</h1>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://nimahsn.github.io" target="_blank">Nima Hosseini Dashtbayaz</a><sup>1</sup>,</span>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">𝚽-ROM: Physics-informed Reduced Order Modeling of Time-dependent
+                PDEs via Differentiable Solvers</h1>
+              <div class="is-size-5 publication-authors">
                 <span class="author-block">
-                  <a href="https://www.research.autodesk.com/people/hesam-salehipour/" target="_blank">Hesam Salehipour</a><sup>*,2</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://www.research.autodesk.com/people/adrian-butscher/" target="_blank">Adrian Butscher</a><sup>2</sup>,
-                  </span>
-                  <span class="author-block">
-                    <a href="https://www.research.autodesk.com/people/nigel-moral-research/" target="_blank">Nigel Morris</a><sup>2</sup>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>University of Western Ontario, <sup>2</sup>Autodesk Research<br>NeurIPS 2025</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2505.14595.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <span class="link-block">
-                    <a href="https://github.com/phi-rom/PhiROM" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
+                  <a href="https://nimahsn.github.io" target="_blank">Nima Hosseini Dashtbayaz</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://www.research.autodesk.com/people/hesam-salehipour/" target="_blank">Hesam
+                    Salehipour</a><sup>*,2</sup>,</span>
+                <span class="author-block">
+                  <a href="https://www.research.autodesk.com/people/adrian-butscher/" target="_blank">Adrian
+                    Butscher</a><sup>2</sup>,
                 </span>
+                <span class="author-block">
+                  <a href="https://www.research.autodesk.com/people/nigel-moral-research/" target="_blank">Nigel
+                    Morris</a><sup>2</sup>
+                </span>
+              </div>
 
-                    <span class="link-block">
-                  <a href="https://arxiv.org/abs/2505.14595" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>University of Western Ontario, <sup>2</sup>Autodesk
+                  Research<br>NeurIPS 2025</span>
+                <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/pdf/2505.14595.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
                   </span>
-                  <span>arXiv</span>
 
                   <span class="link-block">
-                  <a href="https://neurips.cc/virtual/2025/loc/mexico-city/poster/117995" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fas fa-chalkboard"></i>
+                    <a href="https://github.com/phi-rom/PhiROM" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
                   </span>
-                  <span>Slides</span>
 
-                </a>
-              </span>
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2505.14595" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+
+                      <span class="link-block">
+                        <a href="https://neurips.cc/virtual/2025/loc/mexico-city/poster/117995" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fas fa-chalkboard"></i>
+                          </span>
+                          <span>Slides</span>
+
+                        </a>
+                      </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="static/images/phirom_overview.png" alt="Phi-ROM overview" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        𝚽-ROM is a physics-informed reduced-order model that integrates differentiable PDE solvers into the training loop and learns the latent temporal dynamics consistent with the governing physics as embedded in the solver. The resulting model generalizes to unseen parameters, enables long-term forecasting, improves data efficiency, and is robust to various physical phenomena.
-        </h2>
-    </div>
-  </div>
-</section>
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Reduced-order modeling (ROM) of time-dependent and parameterized differential equations aims to accelerate the simulation of complex high-dimensional systems by learning a compact latent manifold representation that captures the characteristics of the solution fields and their time-dependent dynamics. Although high-fidelity numerical solvers generate the training datasets, they have thus far been excluded from the training process, causing the learned latent dynamics to drift away from the discretized governing physics. This mismatch often limits generalization and forecasting capabilities. In this work, we propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between the full and reduced systems. Our model outperforms state-of-the-art data-driven ROMs and other physics-informed strategies by accurately generalizing to new dynamics arising from unseen parameters, enabling long-term forecasting beyond the training horizon, maintaining continuity in both time and space, and reducing the data cost. Furthermore, 𝚽-ROM learns to recover and forecast the solution fields even when trained or evaluated with sparse and irregular observations of the fields, providing a flexible framework for field reconstruction and data assimilation. We demonstrate the framework's robustness across different PDE solvers and highlight its broad applicability by providing an open-source JAX implementation readily extensible to other PDE systems and differentiable solvers.
-          </p>
-        </div>
-        <div class="block has-text-centered" style="margin-top: 2rem;">
-            <p class="is-size-6 has-text-weight-bold mb-2">Listen to the Audio Overview</p>
-            <audio controls src="static/audio/podcast_notebooklm.m4a" style="width: 100%; max-width: 600px;">
-              Your browser does not support the audio element.
-            </audio>
-            <p class="is-size-7 has-text-grey mt-2">Audio overview generated by Google's NotebookLM</p>
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img src="static/images/phirom_overview.png" alt="Phi-ROM overview" loading="lazy" />
+          <h2 class="subtitle has-text-centered">
+            𝚽-ROM is a physics-informed reduced-order model that integrates differentiable PDE solvers into the
+            training loop and learns the latent temporal dynamics consistent with the governing physics as embedded in
+            the solver. The resulting model generalizes to unseen parameters, enables long-term forecasting, improves
+            data efficiency, and is robust to various physical phenomena.
+          </h2>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+    <section class="section" style="padding-top: 1rem;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Audio Overview</h2>
+            <div class="block has-text-centered">
+              <audio controls src="static/audio/podcast_notebooklm.m4a" style="width: 100%; max-width: 600px;">
+                Your browser does not support the audio element.
+              </audio>
+              <p class="is-size-7 has-text-grey mt-2">Audio overview generated by Google's NotebookLM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Reduced-order modeling (ROM) of time-dependent and parameterized differential equations aims to
+                accelerate the simulation of complex high-dimensional systems by learning a compact latent manifold
+                representation that captures the characteristics of the solution fields and their time-dependent
+                dynamics. Although high-fidelity numerical solvers generate the training datasets, they have thus far
+                been excluded from the training process, causing the learned latent dynamics to drift away from the
+                discretized governing physics. This mismatch often limits generalization and forecasting capabilities.
+                In this work, we propose Physics-informed ROM (𝚽-ROM) by incorporating differentiable PDE solvers into
+                the training procedure. Specifically, the latent space dynamics and its dependence on PDE parameters are
+                shaped directly by the governing physics encoded in the solver, ensuring a strong correspondence between
+                the full and reduced systems. Our model outperforms state-of-the-art data-driven ROMs and other
+                physics-informed strategies by accurately generalizing to new dynamics arising from unseen parameters,
+                enabling long-term forecasting beyond the training horizon, maintaining continuity in both time and
+                space, and reducing the data cost. Furthermore, 𝚽-ROM learns to recover and forecast the solution
+                fields even when trained or evaluated with sparse and irregular observations of the fields, providing a
+                flexible framework for field reconstruction and data assimilation. We demonstrate the framework's
+                robustness across different PDE solvers and highlight its broad applicability by providing an
+                open-source JAX implementation readily extensible to other PDE systems and differentiable solvers.
+              </p>
+            </div>
 
-<!-- <section class="hero" id="results">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="hero" id="results">
     <div class="hero-body">
       <div class="container">
         <h2 class="title">Results</h2>
@@ -360,53 +409,58 @@
     </div>
 </section> -->
 
-<section class="hero is-small is-light">
-<div class="hero-body">
-  <div class="container">
-    <h2 class="title">Poster</h2>
+    <section class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title">Poster</h2>
 
-    <iframe  src="static/pdfs/poster_neurips.pdf" width="100%" height="700">
-        </iframe>
-      
-    </div>
-  </div>
-</section>
+          <iframe src="static/pdfs/poster_neurips.pdf" width="100%" height="700">
+          </iframe>
 
-<section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
+        </div>
       </div>
-      <pre id="bibtex-code"><code>@article{hosseini2025phirom,
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@article{hosseini2025phirom,
   title   = {Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers},
   author  = {Nima Hosseini Dashtbayaz and Hesam Salehipour and Adrian Butscher and Nigel Morris},
   year    = {2025},
   journal = {arXiv preprint arXiv: 2505.14595}
 }
 </code></pre>
-    </div>
-</section>
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
+              <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                  href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                You are free to borrow the source code of this website, we just ask that you link back to this page in
+                the footer. <br> This website is licensed under a <a rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                  Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
 
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </footer>
 
 </body>
-  </html>
+
+</html>
